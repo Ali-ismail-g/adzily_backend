@@ -5,8 +5,8 @@ const auth = require("../middleware/auth")
 
 
 //signup
-router.post('/addTodo/:id',auth ,todosController.addTodo);
+router.post('/addTodo',auth ,todosController.addTodo);
 //login
-router.get('/:id', auth,todosController.getAllTodos);
+router.get('/', auth,todosController.getAllTodos);
 
 module.exports = router;

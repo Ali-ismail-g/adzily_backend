@@ -10,7 +10,7 @@ exports.addTodo = (req,res)=>{
         _id: new mongoose.Types.ObjectId,
         todo,
     })
-    User.findById({_id:req.params.id},(error,user)=>{
+    User.findById({_id:req.userId},(error,user)=>{
         if(error) return res.send(error);
         user.todos.push(mytodos);
         user.save((error,user)=>{
@@ -24,7 +24,7 @@ exports.addTodo = (req,res)=>{
 }
 //View all my todos
 exports.getAllTodos = (req,res)=>{
-    User.findById({_id:req.params.id}).populate('todos')
+    User.findById({_id:req.userId}).populate('todos')
     .then((result) => {
       res.json(result);
     })
